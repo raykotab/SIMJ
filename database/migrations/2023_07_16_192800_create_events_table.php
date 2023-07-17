@@ -14,7 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
+            $table->increments('event_id');
+            $table->string('name');
+            $table->dateTime('date');
+            $table->dateTime('event_date');
+            $table->dateTime('event_begins');
+            $table->dateTime('event_ends');
+            $table->unsignedInteger('creator_id'); 
+            $table->foreign('creator_id')->references('user_id')->on('users');
+            $table->integer('editor_id');
             $table->timestamps();
         });
     }

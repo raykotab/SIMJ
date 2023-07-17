@@ -13,6 +13,16 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * @var string $table
+     */
+    protected $table = 'users';
+
+    /**
+     * @var string $primaryKey
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -41,4 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function createdEvents()
+    {
+        return $this->hasMany(Event::class, 'creator_id');
+    }
+
+    public function attendedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'attendees', 'user_id', 'event_id');
+    }
 }

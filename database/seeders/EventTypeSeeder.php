@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Attendee;
+use App\Models\EventType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AttendeeSeeder extends Seeder
+class EventTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class AttendeeSeeder extends Seeder
      */
     public function run()
     {
-        Attendee::factory(50)->create();
+        EventType::factory(50)->create();
     }
 }

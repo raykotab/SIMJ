@@ -26,7 +26,7 @@ class Event extends Model
      */
     protected $fillable = [
         'name',
-        'date',
+        'description',
         'event_date',
         'event_begins',
         'event_ends',
@@ -34,22 +34,6 @@ class Event extends Model
         'created_at',
         'editor_id',
         'edited_at'
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
     ];
 
     public function creator()

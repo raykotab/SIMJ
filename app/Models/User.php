@@ -4,13 +4,26 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Model//Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * @var string $table
+     */
+    protected $table = 'users';
+
+    /**
+     * @var string $primaryKey
+     */
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +54,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function createdEvents(): HasMany
+    {
+        return $this->hasMany(Event::class, 'creator_id');
+    }
+
+    public function attendees(): HasMany
+    {
+        return $this->hasMany(Attendee::class, 'user_id', 'user_id');
+    }
 }

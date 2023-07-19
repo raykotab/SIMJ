@@ -13,7 +13,7 @@ class AttendeeSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Attendee::factory(50)->create();
     }

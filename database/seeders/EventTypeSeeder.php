@@ -13,7 +13,7 @@ class EventTypeSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         EventType::factory(50)->create();
     }

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
@@ -36,14 +39,14 @@ class Event extends Model
         'edited_at'
     ];
 
-    public function creator()
+    public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function attendees()
+    public function attendees(): HasMany
     {
-        return $this->belongsToMany(User::class, 'attendees', 'event_id', 'user_id');
+        return $this->hasMany(Attendee::class, 'event_id', 'event_id');
     }
 }
 

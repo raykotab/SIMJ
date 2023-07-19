@@ -17,7 +17,7 @@ class AttendeeFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'user_id' => random_int(1, 10), // Assuming you have users with IDs from 1 to 10

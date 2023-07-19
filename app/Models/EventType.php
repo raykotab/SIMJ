@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EventType extends Model
 {
@@ -32,7 +33,7 @@ class EventType extends Model
         'text_color'
     ];
 
-    public function style()
+    public function style(): BelongsTo
     {
         return $this->belongsTo(Event::class, 'event_id');
     }

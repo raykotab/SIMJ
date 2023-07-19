@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        \App\Models\User::factory(20)->create();
-        \App\Models\Event::factory(20)->create();
-        \App\Models\Attendee::factory(50)->create();
-        \App\Models\EventType::factory(20)->create();
+        \App\Models\User::factory(3)->create();
+        \App\Models\Event::factory(6)->create();
+        \App\Models\Attendee::factory(9)->create();
+        \App\Models\EventType::factory(6)->create();
 
 
         // \App\Models\User::factory()->create([
